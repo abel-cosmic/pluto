@@ -1,0 +1,28 @@
+[metadata]
+author_name = "Abel Shibabaw"
+author_email = "abelshibabaw291@gmail.com"
+difficulty = "hard"
+
+difficulty_explanation = "The task requires parsing Nginx access logs to detect brute-force credential stuffing via a sliding time window, properly evaluating IPv4 and IPv6 addresses, avoiding internal IP bans, and idempotently injecting rules into a live Nginx configuration."
+
+solution_explanation = "A Python script that reads access.log, identifies IPs making more than 5 failed authentication requests within 60 seconds, filters out internal IPs, and injects 'deny <IP>;' statements into nginx.conf between specific markers."
+
+verification_explanation = "A Pytest suite checking standard IPv4 bans, IPv6 bans, internal IP whitelisting, correct 60s sliding window boundaries, idempotent configuration injection, and sorting."
+
+category = "security"
+tags = ["python", "log-parsing", "nginx", "security"]
+
+expert_time_estimate_hours = 0.5
+requires_internet = false
+
+[verifier]
+timeout_sec = 300
+
+[agent]
+timeout_sec = 1200
+
+[environment]
+build_timeout_sec = 600
+cpus = 1
+memory_mb = 2048
+storage_mb = 4096
